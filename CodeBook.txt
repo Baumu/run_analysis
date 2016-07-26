@@ -1,0 +1,118 @@
+CodeBook – Assignment Week 4 Getting and Cleaning Data
+
+Following labels were used to read the different tables:
+test_x:     		read table x_test.txt
+test_y:			read table y_test.txt
+subject_test:		read table subject_test.txt
+train_x:			read table x_train.txt
+train_y:			read table y_train.txt
+subject_train:		read table subject_train.txt
+features:		read table features.txt
+activity_labels:		read table activity_labels.txt
+
+
+The following datasets were built:
+data_test:		contains the tables test_x, test_y and, subject_test
+data_train:		contains the tables train_x, train_y, and subject_train
+data:			combines the two sets data_test and data_train
+data_short:		contains only those measurements of data that contain mean or std in the 			colnames
+data_tidy:		contains the average of each variable for each activity and each subject
+
+The labels to identify were named as follows:
+subject_ID:		Identifies the subject by number
+activity_ID:		Identifies the activity (such as Walking, Laying etc.)
+
+
+Descriptive activity names were added:
+If activity_ID = 1, the activitiy is “Walking”.
+If activity_ID =2, the activity is “Walking Upstairs”.
+If activity_ID = 3, the activity is “Walking Downstairs”.
+If activity_ID = 4, the activity is “Sitting”.
+If activity_ID = 5, the activity is “Standing”.
+If activity_ID = 6, the activity is “Laying”.
+
+
+The different measures are the following:
+[3] "timesBodyAcceleration-mean()-X"                       
+[4] "timesBodyAcceleration-mean()-Y"                       
+[5] "timesBodyAcceleration-mean()-Z"                       
+[6] "timesBodyAcceleration-std()-X"                        
+[7] "timesBodyAcceleration-std()-Y"                        
+[8] "timesBodyAcceleration-std()-Z"                        
+[9] "timesGravityAcceleration-mean()-X"                    
+[10] "timesGravityAcceleration-mean()-Y"                    
+[11] "timesGravityAcceleration-mean()-Z"                    
+[12] "timesGravityAcceleration-std()-X"                     
+[13] "timesGravityAcceleration-std()-Y"                     
+[14] "timesGravityAcceleration-std()-Z"                     
+[15] "timesBodyAccelerationJerk-mean()-X"                   
+[16] "timesBodyAccelerationJerk-mean()-Y"                   
+[17] "timesBodyAccelerationJerk-mean()-Z"                   
+[18] "timesBodyAccelerationJerk-std()-X"                    
+[19] "timesBodyAccelerationJerk-std()-Y"                    
+[20] "timesBodyAccelerationJerk-std()-Z"                    
+[21] "timesBodyGyroscope-mean()-X"                          
+[22] "timesBodyGyroscope-mean()-Y"                          
+[23] "timesBodyGyroscope-mean()-Z"                          
+[24] "timesBodyGyroscope-std()-X"                           
+[25] "timesBodyGyroscope-std()-Y"                           
+[26] "timesBodyGyroscope-std()-Z"                           
+[27] "timesBodyGyroscopeJerk-mean()-X"                      
+[28] "timesBodyGyroscopeJerk-mean()-Y"                      
+[29] "timesBodyGyroscopeJerk-mean()-Z"                      
+[30] "timesBodyGyroscopeJerk-std()-X"                       
+[31] "timesBodyGyroscopeJerk-std()-Y"                       
+[32] "timesBodyGyroscopeJerk-std()-Z"                       
+[33] "timesBodyAccelerationMagnitude-mean()"                
+[34] "timesBodyAccelerationMagnitude-std()"                 
+[35] "timesGravityAccelerationMagnitude-mean()"             
+[36] "timesGravityAccelerationMagnitude-std()"              
+[37] "timesBodyAccelerationJerkMagnitude-mean()"            
+[38] "timesBodyAccelerationJerkMagnitude-std()"             
+[39] "timesBodyGyroscopeMagnitude-mean()"                   
+[40] "timesBodyGyroscopeMagnitude-std()"                    
+[41] "timesBodyGyroscopeJerkMagnitude-mean()"               
+[42] "timesBodyGyroscopeJerkMagnitude-std()"                
+[43] "frequencyBodyAcceleration-mean()-X"                   
+[44] "frequencyBodyAcceleration-mean()-Y"                   
+[45] "frequencyBodyAcceleration-mean()-Z"                   
+[46] "frequencyBodyAcceleration-std()-X"                    
+[47] "frequencyBodyAcceleration-std()-Y"                    
+[48] "frequencyBodyAcceleration-std()-Z"                    
+[49] "frequencyBodyAcceleration-meanFreq()-X"               
+[50] "frequencyBodyAcceleration-meanFreq()-Y"               
+[51] "frequencyBodyAcceleration-meanFreq()-Z"               
+[52] "frequencyBodyAccelerationJerk-mean()-X"               
+[53] "frequencyBodyAccelerationJerk-mean()-Y"               
+[54] "frequencyBodyAccelerationJerk-mean()-Z"               
+[55] "frequencyBodyAccelerationJerk-std()-X"                
+[56] "frequencyBodyAccelerationJerk-std()-Y"                
+[57] "frequencyBodyAccelerationJerk-std()-Z"                
+[58] "frequencyBodyAccelerationJerk-meanFreq()-X"           
+[59] "frequencyBodyAccelerationJerk-meanFreq()-Y"           
+[60] "frequencyBodyAccelerationJerk-meanFreq()-Z"           
+[61] "frequencyBodyGyroscope-mean()-X"                      
+[62] "frequencyBodyGyroscope-mean()-Y"                      
+[63] "frequencyBodyGyroscope-mean()-Z"                      
+[64] "frequencyBodyGyroscope-std()-X"                       
+[65] "frequencyBodyGyroscope-std()-Y"                       
+[66] "frequencyBodyGyroscope-std()-Z"                       
+[67] "frequencyBodyGyroscope-meanFreq()-X"                  
+[68] "frequencyBodyGyroscope-meanFreq()-Y"                  
+[69] "frequencyBodyGyroscope-meanFreq()-Z"                  
+[70] "frequencyBodyAccelerationMagnitude-mean()"            
+[71] "frequencyBodyAccelerationMagnitude-std()"             
+[72] "frequencyBodyAccelerationMagnitude-meanFreq()"        
+[73] "frequencyBodyBodyAccelerationJerkMagnitude-mean()"    
+[74] "frequencyBodyBodyAccelerationJerkMagnitude-std()"     
+[75] "frequencyBodyBodyAccelerationJerkMagnitude-meanFreq()"
+[76] "frequencyBodyBodyGyroscopeMagnitude-mean()"           
+[77] "frequencyBodyBodyGyroscopeMagnitude-std()"            
+[78] "frequencyBodyBodyGyroscopeMagnitude-meanFreq()"       
+[79] "frequencyBodyBodyGyroscopeJerkMagnitude-mean()"       
+[80] "frequencyBodyBodyGyroscopeJerkMagnitude-std()"        
+[81] "frequencyBodyBodyGyroscopeJerkMagnitude-meanFreq()" 
+
+
+
+
